@@ -14,6 +14,9 @@ def clean_markdown_json(raw_text: str) -> str:
         return match.group(1).strip()
     return raw_text.strip()
 
+
+
+
 def get_company_profile(company_name: str) -> dict:
     """Asks Gemini for a company profile and parses it into a dictionary."""
     # Instantiates the client (picks up GEMINI_API_KEY from your .env file)
@@ -38,6 +41,8 @@ def get_company_profile(company_name: str) -> dict:
         ]
     }
     """
+
+
 
     response = client.models.generate_content(
         model='gemini-2.5-flash', # fast, cost-effective model
