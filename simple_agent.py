@@ -35,7 +35,7 @@ def decide_tool(user_input:str):
     return response.text
 def  parse_tool_decision(response_text:str):
     cleaned = clean_markdown_json(response_text)
-    return json.loads(cleaned)
+    return json.loads(cleaned)#returns a python dictionary (dict)
 
 def execute_tool(decision:dict):
     tool_name=decision.get("tool")
@@ -51,6 +51,15 @@ def execute_tool(decision:dict):
     else:
         return "Invalid tool specified."
 
+def generate_final_response(
+        user_request:str,
+        tool_result:str
+):
+    response=client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=f"User request:{user_request}, tool result:{tool_result}. Provide a helpful response to the user."
+    ) 
+    return response.text
 
 if __name__=="__main__":
     user_request=input("enter your request: ")
@@ -59,3 +68,7 @@ if __name__=="__main__":
     decision=parse_tool_decision(result)
     execution_result=execute_tool(decision)
     print(f"Tool execution result: {execution_result}")
+
+    final_response=generate_final_response(user_request,execution_result)
+    print(final_response)
+
