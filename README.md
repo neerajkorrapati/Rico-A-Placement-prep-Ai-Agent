@@ -13,3 +13,7 @@
       ~intially gemini was acting as a text generator, but here we make it act as an ai agent,
       we give it pre-made tools, and it chooses from these existing tools and executes the operation at hand, hence acting like a true Ai_Agent.
       (here we also implement the parsing function).
+
+#day 5: knowledge-augmented agent, built a new tool:company_lookup.py, we use it to understand knowledg retreival.
+     we can use this tool to retrieve knowledge from another file, which may or may not be in personal pc or in gemini.
+     this lays foundation for RAG.
