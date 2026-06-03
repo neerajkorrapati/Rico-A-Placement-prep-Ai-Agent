@@ -1,15 +1,12 @@
-#day 0: Turn ai-generated text into structured app data.
+﻿# PLACEMENT-PREP-AGENT(still in progress, learning as i create)
+I am bulding this project to make interview prep smarter and less overwhelming. You just type in a company and role, and the app does the rest—it scours the web for real interview experiences, stores them in a vector database, and generates targeted practice questions just for you.
 
-#day 1: Conversational Ai-Systems, (basically with context, built using chat[] declared outside while loop)
+Key tech behind it:
 
-#day 2: Reliable validated Ai- pipelines, (instead of directly relying on ai- outpus, we validate it through a pre-determined structure using pydantic, and generate the preferred response.)
+LLMs & LangChain: I used LangChain to orchestrate the whole workflow, connecting the LLM to live data so it can provide relevant, accurate advice.
 
-#day 3: Persistent Ai-Systems, App's no longer behave like a temporary script, start behaving like Ai-assistants,
-      ~we convert the the chat_history into json files, and store it inside the computer's memory ,such that even if we quit the program and relaunch it , it will have context.      
-      (implementation and understanding of context windows, file serialzaition -(converting python objets into solvable formats)
-      ~functions to trim -memory() to reduce token,memory and load usage
-      
-#day 4:Gemini-router implementation,
-      ~intially gemini was acting as a text generator, but here we make it act as an ai agent,
-      we give it pre-made tools, and it chooses from these existing tools and executes the operation at hand, hence acting like a true Ai_Agent.
-      (here we also implement the parsing function).
+Vector Search: It stores interview data in a way that makes it easy for the AI to "remember" and retrieve specific insights based on what you’re studying.
+
+Interactive Coaching: It's not just a static list of questions; you can actually have a back-and-forth conversation to practice your answers.
+
+It’s deployed as a live web app, so you can track your progress across multiple companies and keep all your prep in one place. It was a great way to get hands-on experience building a real, data-driven application from scratch.
