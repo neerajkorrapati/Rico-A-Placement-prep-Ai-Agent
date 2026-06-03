@@ -17,9 +17,9 @@ available tools:
 
 3. file_reader: which is used for reading the content of a file.
 
-4.company_lookup: used for getting company information from a local data_base
+4.company_lookup: used for getting company information from a local data_base.
 
-5.retriever : used for searching up company interview knowledge base
+5.retriever : used for searching up company interview knowledge base. answer only using the retrieved context, if the answer not present , then say :"Information not available in knowledge base".
 
 example:
 {
