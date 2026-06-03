@@ -5,7 +5,8 @@ from tools.calculator import calculator
 from tools.datetime_tool import get_current_time
 from tools.file_reader import read_file
 from tools.parser import clean_markdown_json
-from tools.company_lookup import get_company_info   
+from tools.company_lookup import get_company_info  
+from tools.retriever import retrieve_context
 load_dotenv()
 client= genai.Client()
 SYSTEM_PROMPT=""" 
@@ -17,10 +18,18 @@ available tools:
 3. file_reader: which is used for reading the content of a file.
 
 4.company_lookup: used for getting company information from a local data_base
+
+5.retriever : used for searching up company interview knowledge base
+
 example:
 {
 "tool":"calculator",
 "input":"2+3*12"
+}
+example:
+{
+"tool":"retriever"
+"input":"Amazon focus"
 }
 Respond only with valid JSON object.
 Do not explain.
@@ -63,6 +72,8 @@ def execute_tool(decision:dict):
         return read_file(tool_input)
     elif(tool_name=="company_lookup"):
         return get_company_info(tool_input)
+    elif(tool_name=="retriever"):
+        return retrieve_context(tool_input)
     else:
         return "Invalid tool specified."
 
