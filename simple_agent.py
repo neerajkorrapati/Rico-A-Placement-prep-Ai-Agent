@@ -7,8 +7,20 @@ from tools.file_reader import read_file
 from tools.parser import clean_markdown_json
 from tools.company_lookup import get_company_info  
 from tools.retriever import retrieve_context
+from tools.query_rewritter import rewrite_query
 load_dotenv()
 client= genai.Client()
+
+chat_history=[]
+def formatted_chat_history(chat_history): #here we convert and store the chat historyy in a formatted json format.
+    formatted=""
+    for message in chat_history:
+        formatted+=(
+            f"{message['role']}: "
+            f"{message['content']}\n"
+        )
+    return formatted
+
 SYSTEM_PROMPT=""" 
 you are a routing agent.
 available tools:
@@ -19,7 +31,9 @@ available tools:
 
 4.company_lookup: used for getting company information from a local data_base.
 
-5.retriever : used for searching up company interview knowledge base. answer only using the retrieved context, if the answer not present , then say :"Information not available in knowledge base".
+5.retriever : used for searching up company interview knowledge base, and other information like ashwath and madhavan. answer only using the retrieved context, if the answer not present , then say :"Information not available in knowledge base".
+
+6.General fallback: if query is not related to any of the above, use retriever tool and check if information is in the knowledge base, if not there then say:"Information not available in knowledge base.
 
 example:
 {
@@ -28,7 +42,7 @@ example:
 }
 example:
 {
-"tool":"retriever"
+"tool":"retriever",
 "input":"Amazon focus"
 }
 Respond only with valid JSON object.
@@ -73,14 +87,17 @@ def execute_tool(decision:dict):
     elif(tool_name=="company_lookup"):
         return get_company_info(tool_input)
     elif(tool_name=="retriever"):
-        return retrieve_context(tool_input)
+       # return retrieve_context(tool_input)  #make changeshere for search_history context retrieval
+       formatted_history =formatted_chat_history(chat_history)
+       search_query=rewrite_query(tool_input,formatted_history)
+       print(f"\nRewritten Query{search_query}")
+
+       return retrieve_context(search_query)
+    
     else:
         return "Invalid tool specified."
 
-def generate_final_response(
-        user_request:str,
-        tool_result:str
-):
+def generate_final_response(user_request:str,tool_result:str):
     response=client.models.generate_content(
         model="gemini-2.5-flash",
         contents=f"User request:{user_request}, tool result:{tool_result}. Provide a helpful response to the user.keep it less than 30 words",
@@ -91,25 +108,37 @@ def generate_final_response(
     return response.text
 
 if __name__=="__main__":
-    try:
-        user_request=input("enter your request: ")
-        result=decide_tool(user_request)
-        print("\nRouter Output:")
-        print(result)
+   print("\n Placement Prep Agent:\n")
+   print("Type 'exit' to quit.\n")
+   while(True):
+       user_request= input("You: ")
+       if(user_request.lower()=="exit"):
+           break
+       try:
+           chat_history.append({
+               "role":"user",
+               "content":user_request
+           })
+           result=decide_tool(user_request)
+           print("Router ouput\n")
+           print(result)
+           decision=parse_tool_decision(result)
+           tool_result=execute_tool(decision)
+           final_response=generate_final_response(user_request,tool_result)
+           print(f"Agent final response: {final_response}.\n")
 
-        #parse JSON
-        decision=parse_tool_decision(result)
-        execution_result=execute_tool(decision)
-        
-        print(f"Tool execution result: {execution_result}")
+           chat_history.append({
+               "role":"assistant",
+               "content":final_response
+           })
 
-        final_response=generate_final_response(user_request,execution_result)
-        print("\nAgent response: ")
-        print(final_response)
-    except json.JSONDecodeError as e:
-        print(f"Failed to parse / json parsing error : {e}")
-    except Exception as e:
-        print(f"Unexpected error: {e}")
+           #keep only the last10 messages of chat history;
+
+           chat_history[:]=chat_history[-10:]
+
+       except Exception as e:
+           print(f"Error: {e}")
+    
 
 
     
