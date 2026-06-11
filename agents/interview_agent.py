@@ -5,7 +5,7 @@ load_dotenv()
 
 client=genai.Client()
 def interview_agent(context):
-    prompt="""
+    prompt=f"""
     Analyze the retrieved Context :
     {context}
     And identify the most important topics for Preparation.
