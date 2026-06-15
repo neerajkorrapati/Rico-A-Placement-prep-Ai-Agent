@@ -9,7 +9,7 @@ def retrieve_context(query):
         query_texts=[query],
         n_results=5
     )
-    documents = results['documents'][0]
-    combined_context="\n\n".join(documents)
-    return combined_context
+    documents = results["documents"][0]
+
+    return documents
 
