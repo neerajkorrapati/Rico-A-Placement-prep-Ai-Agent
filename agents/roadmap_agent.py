@@ -9,6 +9,8 @@ def roadmap_agent(topics):
 
     prompt = f"""
 Create a 4-week preparation roadmap.
+Keep it precise and concise, in order to avoid using excess tokens 
+and resources.
 
 Topics:
 
