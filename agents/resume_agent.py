@@ -5,17 +5,19 @@ load_dotenv()
 client=genai.Client()
 
 def analyze_resume(resume_text):
-    prompt="""
+    prompt=f"""
     I need you to analyze this resume,
     identify the following:
     1. Strengths,
-    2. Weakness,
-    3. Improvements,
+    2. Weaknesses,
+    3. Suggested Improvements,
     4.Technical skills,
 
-    i want you to briefly summarize and mention all of the above points, while using the tokens of the api as resourcefully as possible.
+    keep the response as concise possible.
     The resume:
     {resume_text}.
+    also print the the first few points of resume, 
+    and give respones based off the topics present in the resume uploaded only.
     """
 
     response=client.models.generate_content(

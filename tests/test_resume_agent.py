@@ -1,5 +1,5 @@
 from tools.resume_parser import read_resume
-from agents.resume_agent.py import analyze_resume
+from agents.resume_agent import analyze_resume
 
 resume = read_resume("data\sample_resume.txt")
 
