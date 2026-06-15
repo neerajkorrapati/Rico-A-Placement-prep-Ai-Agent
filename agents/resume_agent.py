@@ -13,7 +13,7 @@ def analyze_resume(resume_text):
     3. Suggested Improvements,
     4.Technical skills,
 
-    keep the response as concise possible.
+    keep the response as concise and small as possible.
     The resume:
     {resume_text}.
     also print the the first few points of resume, 
