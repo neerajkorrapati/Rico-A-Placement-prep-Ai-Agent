@@ -1,6 +1,6 @@
 def keyword_search(query):
     #this is my keyword retrieving tool
-    with open("data\company_notes.txt","r",encoding="utf-8") as file:
+    with open("data/company_notes.txt","r",encoding="utf-8") as file:
         text=file.read()
     matches=[]
 

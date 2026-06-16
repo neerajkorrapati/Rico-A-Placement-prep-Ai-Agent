@@ -12,7 +12,7 @@ def placement_prep_agent(resume_path,target_company):
     roadmap=roadmap_agent(gap_analysis)
 
     return{
-        "resume_analysis ":resume_analysis,
+        "resume_analysis":resume_analysis,
         "gap_analysis":gap_analysis,
         "roadmap":roadmap
     }
