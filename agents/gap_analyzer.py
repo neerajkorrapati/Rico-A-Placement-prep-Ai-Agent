@@ -30,4 +30,4 @@ def gap_analyzer(company_context,resume_analysis):
         contents=prompt
     )
     cleaned= clean_markdown_json(response.text)
-    return json.loads(cleaned.text)
+    return json.loads(cleaned)

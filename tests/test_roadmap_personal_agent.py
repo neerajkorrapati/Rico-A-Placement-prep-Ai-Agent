@@ -30,5 +30,5 @@ roadmap = road_map_agent(
 )
 
 print("\n=== PERSONALIZED ROADMAP ===\n")
-
+print(type(roadmap))
 print(roadmap)
