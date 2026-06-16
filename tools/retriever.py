@@ -1,5 +1,5 @@
 import chromadb
-
+#this is my semantic retrieving tool
 client=chromadb.PersistentClient(path="data/chromadb")
 
 collection=client.get_collection("company_knowledge")

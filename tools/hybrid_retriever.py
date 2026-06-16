@@ -1,6 +1,6 @@
 from tools.keyword_search import keyword_search
 from tools.retriever import retrieve_context
-
+#combines the search results from both keyword and semantic , eliminates duplicate results, and returns a improved search result.
 def hybrid_retriever(query):
     keyword_results= keyword_search(query)
     semantic_results=retrieve_context(query)
