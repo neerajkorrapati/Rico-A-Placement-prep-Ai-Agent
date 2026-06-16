@@ -1,5 +1,7 @@
 from dotenv import load_dotenv
 from google import genai
+from tools.parser import clean_markdown_json
+import json
 load_dotenv()
 
 client=genai.Client()
@@ -7,22 +9,23 @@ client=genai.Client()
 def analyze_resume(resume_text):
     prompt=f"""
     I need you to analyze this resume,
-    identify the following:
-    1. Strengths,
-    2. Weaknesses,
-    3. Suggested Improvements,
-    4.Technical skills,
-
-    keep the response as concise and small as possible.
-    The resume:
+    Return only Valid JSON format:
+    the format:
+    {{
+      "technical_skills":[],
+      "strengths":[],
+      "weaknesses":[],
+      "improvements":[]
+    }}
+    make sure u use these exact key names, do not rename any of the keys.
+    Resume:
     {resume_text}.
-    also print the the first few points of resume, 
-    and give respones based off the topics present in the resume uploaded only.
     """
 
     response=client.models.generate_content(
-        model="gemini-2.5-flash",
+        model="gemini-2.0-flash",
         contents=prompt
     )
+    cleaned = clean_markdown_json(response.text)
 
-    return response.text
+    return json.loads(cleaned)
