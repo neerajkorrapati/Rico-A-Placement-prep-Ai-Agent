@@ -1,4 +1,4 @@
-from agents.personalised_roadmap_agent import road_map_agent
+from agents.roadmap_agent import road_map_agent
 from tools.resume_parser import read_resume
 
 from agents.resume_agent import analyze_resume
