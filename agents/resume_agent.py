@@ -24,7 +24,7 @@ prompt=PromptTemplate.from_template(
 parser=JsonOutputParser()
 chain=(prompt | llm | parser)
 #this modified fcuntion now only uses langchain as compared to before:
-def resume_agent_langchain(resume_text):
+def resume_agent(resume_text):
     return chain.invoke({
         "resume_text":resume_text
     })
