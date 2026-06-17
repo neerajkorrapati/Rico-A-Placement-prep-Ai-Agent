@@ -1,6 +1,6 @@
 from tools.resume_parser import read_resume
 
-from agents.resume_agent_langchain import (
+from agents.resume_agent import (
     resume_agent_langchain
 )
 

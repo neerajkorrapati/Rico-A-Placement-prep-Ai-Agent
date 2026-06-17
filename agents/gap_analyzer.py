@@ -1,13 +1,12 @@
 from dotenv import load_dotenv
-import json
-from google import genai
-from tools.parser import clean_markdown_json
-
+from langchain_core.prompts import PromptTemplate
+from langchain_core.output_parsers import JsonOutputParser
+from langchain_google_genai import ChatGoogleGenerativeAI
 load_dotenv()
-client=genai.Client()
-def gap_analyzer(company_context,resume_analysis):
-    prompt=f"""
-    You are a career Advisor.
+llm=ChatGoogleGenerativeAI(model="gemini-2.5-flash")
+prompt=PromptTemplate.from_template(
+    """
+You are a career Advisor.
     Resume analysis:
     {resume_analysis},
 
@@ -21,13 +20,14 @@ def gap_analyzer(company_context,resume_analysis):
     "recommendations":[],
     "skill_gap":[]
     }}
-    
-
     i also want you to keep the response as concise as possible, and adhere to this format strictly
     """
-    response= client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=prompt
+)
+parser=JsonOutputParser()
+chain=(prompt | llm | parser)
+def gap_analyzer(company_context,resume_analysis):
+    return chain.invoke({
+        "company_context":company_context,
+        "resume_analysis":resume_analysis
+    }        
     )
-    cleaned= clean_markdown_json(response.text)
-    return json.loads(cleaned)
