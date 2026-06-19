@@ -1,12 +1,75 @@
-﻿# PLACEMENT-PREP-AGENT(still in progress, learning as i create)
-I am bulding this project to make interview prep smarter and less overwhelming. You just type in a company and role, and the app does the rest—it scours the web for real interview experiences, stores them in a vector database, and generates targeted practice questions just for you.
+Rico
 
-Key tech behind it:
+Rico is an AI-powered placement preparation assistant built using LangGraph, LangChain, ChromaDB, and Gemini.
 
-LLMs & LangChain: I used LangChain to orchestrate the whole workflow, connecting the LLM to live data so it can provide relevant, accurate advice.
+I started this project primarily as a capstone-style learning project to understand how modern AI applications are built. The goal was to move beyond simple chatbot demos and learn concepts such as Agentic AI, multi-agent workflows, Retrieval-Augmented Generation (RAG), vector databases, prompt engineering, and LLM orchestration by applying them to a real problem.
 
-Vector Search: It stores interview data in a way that makes it easy for the AI to "remember" and retrieve specific insights based on what you’re studying.
+Instead of building isolated examples for each concept, I wanted to integrate everything into a single application that could actually be useful for students preparing for placements and technical interviews.
 
-Interactive Coaching: It's not just a static list of questions; you can actually have a back-and-forth conversation to practice your answers.
+What Rico Does
 
-It’s deployed as a live web app, so you can track your progress across multiple companies and keep all your prep in one place. It was a great way to get hands-on experience building a real, data-driven application from scratch.
+A user uploads their resume and selects a target company.
+
+Rico then:
+
+Analyzes the resume
+Identifies strengths and weaknesses
+Compares the profile against company-specific requirements
+Detects the Skill gap using a RAG pipeline backed by ChromaDB
+Generates a personalized preparation roadmap
+Creates Company specific interview questions
+Provides company-specific insights
+ATS-style analysis including keyword matching and resume recommendations.
+
+The final output is presented through a Streamlit dashboard.
+
+How It Works
+
+Rico uses a multi-agent workflow built with LangGraph.
+
+A resume is first analyzed and compared against company-specific information retrieved from a ChromaDB knowledge base. The outputs are then passed through multiple specialized agents responsible for gap analysis, ATS evaluation, roadmap generation, interview preparation, and company research before being combined into a final report.
+
+Tech Stack
+
+AI & Orchestration
+
+LangChain
+LangGraph
+Google Gemini
+
+Retrieval
+
+ChromaDB
+Retrieval-Augmented Generation (RAG)
+
+Frontend
+
+Streamlit
+
+Backend
+
+Python
+Running Locally
+git clone <repo-url>
+cd rico
+
+pip install -r requirements.txt
+
+Create a .env file:
+
+GOOGLE_API_KEY=your-api-key
+
+Build the knowledge base:
+
+python ingest_documents.py
+
+Run the application:
+
+streamlit run app.py
+
+(A developer's note: )
+
+This project was mainly an opportunity to gain hands-on experience with concepts such as Agentic AI, LangGraph, LangChain, RAG systems, vector databases, prompt engineering, and multi-agent workflows. More importantly, it helped me understand how these individual components can be combined into a complete, deployable application rather than existing as isolated examples.
+
+
+
