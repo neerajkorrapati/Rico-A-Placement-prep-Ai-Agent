@@ -1,5 +1,21 @@
 import streamlit as st
+import chromadb
 from tools.resume_parser import read_resume
+def initialize_database():
+
+    client = chromadb.PersistentClient(
+        path="data/chromadb"
+    )
+
+    collection = client.get_or_create_collection(
+        name="company_knowledge"
+    )
+
+    if collection.count() == 0:
+
+        import ingest_documents
+
+initialize_database()
 from agents.placement_graph import workflow
 # Page Config
 
