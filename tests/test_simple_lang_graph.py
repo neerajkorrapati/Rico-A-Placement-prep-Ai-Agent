@@ -1,38 +1,24 @@
-from typing import TypedDict   
-
+from typing import TypedDict
 from langgraph.graph import(
-    StateGraph,START,END
+    START,END,StateGraph
 )
 class State(TypedDict):
-    number:int
+    resume_text:str
+    resume_analysis:str
 
-def add_two(state:State):
+def resume_node(state:State):
     return{
-        "number":state["number"]+2
+        "resume_analysis":"Python, AI ,java"
     }
-
-def mul_3(state:State):
-    return{
-        "number":state["number"]*3
-    }
-
 graph =StateGraph(State)
-
-graph.add_node("add_two",add_two)
-
-graph.add_node("mul_3",mul_3)
-
-
-graph.add_edge(START,"add_two")
-graph.add_edge("add_two","mul_3")
-graph.add_edge("mul_3",END)
+graph.add_node("resume_node",resume_node)
+graph.add_edge(START,"resume_node")
+graph.add_edge("resume_node",END)
 
 workflow=graph.compile()
-
 result=workflow.invoke(
     {
-        "number":5
+    "resume_text":"My resume"
     }
 )
-
 print(result)
