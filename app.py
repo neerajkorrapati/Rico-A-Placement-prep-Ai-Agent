@@ -1,20 +1,14 @@
 import streamlit as st
 from tools.resume_parser import read_resume
 from agents.placement_graph import workflow
-
-# --------------------------------------------------
 # Page Config
-# --------------------------------------------------
 
 st.set_page_config(
     page_title="Placement Prep AI",
     page_icon="🚀",
     layout="wide"
 )
-
-# --------------------------------------------------
 # Custom Styling
-# --------------------------------------------------
 
 st.markdown("""
 <style>
@@ -61,46 +55,46 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# --------------------------------------------------
 # Header
-# --------------------------------------------------
 
 st.markdown(
     '<div class="main-title">Placement Prep AI</div>',
     unsafe_allow_html=True
 )
-
 st.markdown(
     '<div class="sub-title">Career Intelligence Dashboard</div>',
     unsafe_allow_html=True
 )
-
-# --------------------------------------------------
 # Sidebar
-# --------------------------------------------------
 
 with st.sidebar:
 
     st.header("Candidate Setup")
+    #here
+    AVAILABLE_COMPANIES = [
+    "Amazon",
+    "Google",
+    "Microsoft",
+    "Goldman Sachs",
+    "Walmart",
+    "Adobe",
+    "Uber",
+    "Atlassian"
+]
 
-    company = st.text_input(
+    company = st.selectbox(
         "Target Company",
-        value="Amazon"
+        AVAILABLE_COMPANIES
     )
-
     uploaded_file = st.file_uploader(
         "Upload Resume (.txt)",
         type=["txt"]
     )
-
     generate = st.button(
         "Generate Analysis",
         use_container_width=True
     )
-
-# --------------------------------------------------
 # Workflow
-# --------------------------------------------------
 
 if uploaded_file and generate:
 
@@ -129,17 +123,10 @@ if uploaded_file and generate:
     company_research = report["company_research"]
 
     ats = report.get("ats_analysis")
-
-    # --------------------------------------------------
     # Metrics
-    # --------------------------------------------------
-
     st.divider()
-
     col1, col2, col3 = st.columns(3)
-
     with col1:
-
         if ats:
             st.metric(
                 "ATS Score",
@@ -150,9 +137,7 @@ if uploaded_file and generate:
                 "ATS Score",
                 "N/A"
             )
-
     with col2:
-
         if ats:
             st.metric(
                 "Keyword Match",
@@ -163,14 +148,11 @@ if uploaded_file and generate:
                 "Keyword Match",
                 "N/A"
             )
-
     with col3:
-
         st.metric(
             "Target Company",
             company
         )
-
     # --------------------------------------------------
     # Resume Analysis
     # --------------------------------------------------
@@ -208,18 +190,11 @@ if uploaded_file and generate:
         for item in resume_analysis["improvements"]:
             st.markdown(f"• {item}")
 
-    # --------------------------------------------------
     # Gap Analysis
-    # --------------------------------------------------
-
     st.divider()
-
     st.subheader("Skill Gap Analysis")
-
     col1, col2 = st.columns(2)
-
     with col1:
-
         st.markdown("### Covered Skills")
 
         for skill in gap_analysis["covered_skills"]:
@@ -236,15 +211,9 @@ if uploaded_file and generate:
 
     for rec in gap_analysis["recommendations"]:
         st.markdown(f"• {rec}")
-
-    # --------------------------------------------------
     # Roadmap
-    # --------------------------------------------------
-
     st.divider()
-
     st.subheader("4 Week Preparation Plan")
-
     for week, tasks in roadmap.items():
 
         with st.expander(
@@ -271,23 +240,14 @@ if uploaded_file and generate:
 
         for question in questions:
             st.markdown(f"• {question}")
-
-    # --------------------------------------------------
     # Company Research
-    # --------------------------------------------------
-
     st.divider()
-
     st.subheader("Company Intelligence")
-
     st.markdown("### Overview")
-
     st.write(
         company_research["company_overview"]
     )
-
     col1, col2 = st.columns(2)
-
     with col1:
 
         st.markdown("### Tech Stack")
@@ -296,12 +256,9 @@ if uploaded_file and generate:
             st.markdown(f"• {tech}")
 
     with col2:
-
         st.markdown("### Interview Focus")
-
         for topic in company_research["interview_focus"]:
             st.markdown(f"• {topic}")
-
     if "important_topics" in company_research:
 
         st.markdown("### Important Topics")

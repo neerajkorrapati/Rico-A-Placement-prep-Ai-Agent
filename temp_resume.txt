@@ -1,0 +1,149 @@
+NEERAJ KORRAPATI
+
+Email: [neeraj.korrapati@example.com](mailto:neeraj.korrapati@example.com)
+Phone: +91 9876543210
+LinkedIn: linkedin.com/in/neerajkorrapati
+GitHub: github.com/neerajkorrapati
+
+---
+
+## EDUCATION
+
+Vellore Institute of Technology (VIT), Vellore
+Bachelor of Technology in Computer Science Engineering
+CGPA: 9.18
+
+---
+
+## TECHNICAL SKILLS
+
+Programming Languages:
+
+* Python
+* Java
+* C++
+* SQL
+
+Frameworks & Libraries:
+
+* LangChain
+* LangGraph
+* Streamlit
+* Flask
+
+Databases:
+
+* ChromaDB
+* SQLite
+* MySQL
+
+Tools:
+
+* Git
+* GitHub
+* Linux
+* JMeter
+
+Core Concepts:
+
+* Data Structures and Algorithms
+* Object Oriented Programming
+* Operating Systems
+* Computer Networks
+* Database Management Systems
+
+---
+
+## PROJECTS
+
+Placement Prep AI
+
+Built an agentic AI-powered placement preparation platform using LangGraph and LangChain.
+
+Features:
+
+* Resume analysis
+* Skill gap identification
+* ATS scoring
+* Company research
+* Personalized roadmap generation
+* Interview question generation
+
+Technologies:
+Python, LangGraph, LangChain, ChromaDB, Gemini API, Streamlit
+
+---
+
+Supply Chain Intelligence Copilot
+
+Developed a multi-agent supply chain decision engine capable of forecasting demand and identifying inventory risks.
+
+Features:
+
+* Demand forecasting
+* Inventory monitoring
+* Enterprise knowledge retrieval using RAG
+* Decision recommendations
+
+Technologies:
+Python, XGBoost, ChromaDB, Streamlit, Gemini API
+
+---
+
+Secure Multi User Chat System
+
+Built a Linux-based multi-client chat application using TCP sockets and SQLite.
+
+Features:
+
+* User authentication
+* Chat history persistence
+* Private messaging
+* Concurrent client handling
+
+Technologies:
+C++, Linux Sockets, SQLite
+
+---
+
+## EXPERIENCE
+
+Software Development Intern
+6D Technologies
+
+Responsibilities:
+
+* Developed socket programming applications
+* Conducted performance testing using JMeter
+* Built utility tools in C++
+* Monitored database systems and generated reports
+
+---
+
+## ACHIEVEMENTS
+
+* Solved 400+ Data Structures and Algorithms problems.
+* Shortlisted for Polaris Fellowship Round 2.
+* Maintained CGPA above 9.0.
+* Built multiple AI-powered projects using LangChain and LangGraph.
+
+---
+
+## COURSEWORK
+
+* Data Structures and Algorithms
+* Operating Systems
+* Computer Networks
+* Database Management Systems
+* Software Engineering
+* Artificial Intelligence
+
+---
+
+## AREAS OF INTEREST
+
+* Agentic AI
+* Distributed Systems
+* Cloud Computing
+* Software Engineering
+* Backend Development
