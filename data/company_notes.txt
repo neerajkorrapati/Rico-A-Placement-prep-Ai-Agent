@@ -1,0 +1,196 @@
+Company: Amazon
+
+Overview:
+Amazon is a multinational technology company focusing on e-commerce, cloud computing, artificial intelligence, logistics, and digital streaming. Amazon Web Services (AWS) is one of the world's largest cloud platforms.
+
+Technical Skills Frequently Expected:
+- Data Structures and Algorithms
+- Java
+- Python
+- Object-Oriented Programming
+- SQL
+- Distributed Systems
+- AWS Fundamentals
+- System Design
+
+Interview Process:
+Amazon interviews typically include coding rounds focused on DSA, followed by technical interviews and behavioral interviews. Behavioral interviews heavily evaluate Amazon Leadership Principles.
+
+Leadership Principles:
+Customer Obsession
+Ownership
+Invent and Simplify
+Learn and Be Curious
+Deliver Results
+Think Big
+
+Common Interview Topics:
+Arrays
+Hash Maps
+Trees
+Graphs
+Dynamic Programming
+Concurrency
+System Design
+Database Design
+
+Preparation Advice:
+Candidates should practice LeetCode medium and hard problems, understand system design basics, and prepare STAR-format behavioral stories.
+
+Preferred Technologies:
+AWS
+Java
+Python
+DynamoDB
+S3
+Lambda
+EC2
+
+
+
+Company: Google
+
+Overview:
+Google develops search, cloud computing, AI systems, advertising platforms, Android, and large-scale distributed systems.
+
+Technical Skills Frequently Expected:
+- Data Structures and Algorithms
+- C++
+- Java
+- Python
+- Operating Systems
+- Computer Networks
+- Distributed Systems
+- System Design
+
+Interview Process:
+Google interviews usually involve multiple coding rounds, algorithmic problem solving, and system design discussions for experienced roles.
+
+Common Interview Topics:
+Graphs
+Trees
+Dynamic Programming
+Greedy Algorithms
+Recursion
+Distributed Systems
+Networking
+
+Preparation Advice:
+Candidates should focus heavily on algorithms, problem-solving, and writing optimized solutions under time constraints.
+
+Preferred Technologies:
+Google Cloud Platform
+TensorFlow
+Kubernetes
+Python
+Java
+C++
+
+
+Company: Microsoft
+
+Overview:
+Microsoft develops enterprise software, cloud services, operating systems, AI products, and developer platforms.
+
+Technical Skills Frequently Expected:
+- C#
+- Java
+- Python
+- Data Structures
+- Algorithms
+- Object-Oriented Programming
+- Cloud Computing
+- Azure
+
+Interview Process:
+Microsoft interviews often focus on coding, problem solving, object-oriented design, and behavioral discussions.
+
+Common Interview Topics:
+Arrays
+Linked Lists
+Trees
+Graphs
+Object-Oriented Design
+Concurrency
+
+Preparation Advice:
+Candidates should strengthen coding fundamentals and understand software engineering best practices.
+
+Preferred Technologies:
+Azure
+.NET
+C#
+Python
+SQL Server
+
+
+Company: Goldman Sachs
+
+Overview:
+Goldman Sachs is a leading global investment banking and financial services company.
+
+Technical Skills Frequently Expected:
+- Java
+- Data Structures
+- Algorithms
+- Databases
+- Operating Systems
+- Computer Networks
+
+Interview Process:
+Coding rounds are heavily focused on DSA, followed by technical interviews and discussions on CS fundamentals.
+
+Common Interview Topics:
+Arrays
+Hashing
+Trees
+Graphs
+DBMS
+OS
+CN
+
+Preparation Advice:
+Candidates should have strong problem-solving skills and good understanding of core computer science concepts.
+
+Preferred Technologies:
+Java
+Spring Boot
+SQL
+Linux
+Kafka
+
+
+Company: Walmart Global Tech
+
+Overview:
+Walmart Global Tech develops large-scale retail systems, inventory platforms, supply chain software, and cloud-native services.
+
+Technical Skills Frequently Expected:
+- Java
+- Spring Boot
+- Microservices
+- SQL
+- Distributed Systems
+- Cloud Computing
+
+Interview Process:
+Interviews usually include coding rounds, backend engineering concepts, and system design discussions.
+
+Common Interview Topics:
+Microservices
+Databases
+Caching
+Concurrency
+Distributed Systems
+API Design
+
+Preparation Advice:
+Candidates should understand backend architecture and scalable system design.
+
+Preferred Technologies:
+Java
+Spring Boot
+Kafka
+Redis
+AWS
+MySQL
