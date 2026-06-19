@@ -87,10 +87,11 @@ streamlit run app.py
 
 ---
 
-## Developer's Note
+# Developer's Note
 
 This project was mainly an opportunity to gain hands-on experience with concepts such as Agentic AI, LangGraph, LangChain, RAG systems, vector databases, prompt engineering, and multi-agent workflows. More importantly, it helped me understand how these individual components can be combined into a complete, deployable application rather than existing as isolated examples.
 
 
 ALSO LIVE DEMO -> https://rico-a-placement-prep-ai-agent-mzwxpf3usfqo4pabrkfqhr.streamlit.app/
+
 (*do bear in mind , might take a while to bootup ,since there are multiple agents in play)
