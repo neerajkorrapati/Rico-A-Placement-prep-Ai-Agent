@@ -2,5 +2,9 @@ venv/
 .env
 __pycache__/
 *.pyc
+
+# Ignore generated database only
 data/chromadb/
 
+# Keep source knowledge file
+!data/company_notes.txt
