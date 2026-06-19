@@ -27,10 +27,14 @@ prompt=PromptTemplate.from_template(
 
         Do not rename keys.
         Do not add extra text.
-    """
+        Return ONLY valid JSON.
+        Do not add markdown.
+        Do not add explanations.
+        Do not rename keys.
+     """
 )
 parser =JsonOutputParser()
-chain =(llm | prompt | parser)
+chain =(prompt | llm | parser)
 def interview_agent(gap_analysis,company):
     return chain.invoke({
 

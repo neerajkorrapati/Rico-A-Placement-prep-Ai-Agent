@@ -22,3 +22,4 @@ print(result["resume_analysis"])
 print(result["gap_analysis"])
 
 print(result["roadmap"])
+print(result["final_report"].keys())

@@ -18,6 +18,12 @@ prompt=PromptTemplate.from_template(
         "tech_stack":[],
         "interview_focus":[]
     }}
+    Do not rename keys.
+        Do not add extra text.
+        Return ONLY valid JSON.
+        Do not add markdown.
+        Do not add explanations.
+        Do not rename keys.
     """
 )
 parser=JsonOutputParser();

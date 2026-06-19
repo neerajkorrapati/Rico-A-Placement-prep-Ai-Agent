@@ -18,6 +18,7 @@ class PlacementState(TypedDict):
     roadmap:dict
     interview_questions:dict
     company_research:dict
+    final_report:dict
 #node definitions
 def resume_node(state: PlacementState):
     result=resume_agent(state["resume_text"])
@@ -45,21 +46,49 @@ def company_research_node(state:PlacementState):
     return {
         "company_research":result
     }
+#creating our final -> coordinator node;
+def final_report_node(state:PlacementState):
+    return {
+        "final_report":
+        {
+            "company":
+            state["company"],
+
+            "resume_analysis":
+            state["resume_analysis"],
+
+            "gap_analysis":
+            state["gap_analysis"],
+
+            "roadmap":
+            state["roadmap"],
+
+            "interview_questions":
+            state["interview_questions"],
+
+            "company_research":
+            state["company_research"]
+        }
+    }
+
 graph=StateGraph(PlacementState)
 graph.add_node("resume_node",resume_node)
 graph.add_node("gap_node",gap_node)
 graph.add_node("roadmap_node",roadmap_node)
 graph.add_node("interview_node",interview_node)
 graph.add_node("company_research_node",company_research_node)
-
+#adding our final report node:
+graph.add_node("final_report_node",final_report_node)
+    
 graph.add_edge(START,"resume_node")
 graph.add_edge("resume_node","gap_node")
 graph.add_edge("gap_node","roadmap_node")
 graph.add_edge("gap_node","interview_node")
 graph.add_edge("gap_node","company_research_node")
-graph.add_edge("roadmap_node",END)
-graph.add_edge("interview_node",END)
-graph.add_edge("company_research_node",END)
+graph.add_edge("roadmap_node","final_report_node")
+graph.add_edge("interview_node","final_report_node")
+graph.add_edge("company_research_node","final_report_node")
+graph.add_edge("final_report_node",END)
 
 workflow=graph.compile()
 #result=workflow.invoke()

@@ -19,6 +19,13 @@ prompt=PromptTemplate.from_template(
         make sure u use these exact key names, do not rename any of the keys.
         Resume:
         {resume_text}.
+
+        Do not rename keys.
+        Do not add extra text.
+        Return ONLY valid JSON.
+        Do not add markdown.
+        Do not add explanations.
+        Do not rename keys.
     """
 )
 parser=JsonOutputParser()

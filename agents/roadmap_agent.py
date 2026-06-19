@@ -23,6 +23,13 @@ prompt=PromptTemplate.from_template(
         
         keep the routine as practical as possible.
         also keep the response as short and concise as possible.
+        
+        Do not rename keys.
+        Do not add extra text.
+        Return ONLY valid JSON.
+        Do not add markdown.
+        Do not add explanations.
+        Do not rename keys.
     """
 )
 llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
