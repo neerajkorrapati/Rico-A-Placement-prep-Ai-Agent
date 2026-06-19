@@ -1,21 +1,40 @@
 from google import genai
 from dotenv import load_dotenv
+from langchain_core.prompts import PromptTemplate
+from langchain_core.output_parsers import JsonOutputParser
+from langchain_google_genai import ChatGoogleGenerativeAI
 
 load_dotenv()
 
-client=genai.Client()
-def interview_agent(context):
-    prompt=f"""
-    Analyze the retrieved Context :
-    {context}
-    And identify the most important topics for Preparation.
+llm=ChatGoogleGenerativeAI(model="gemini-2.5-flash")
+
+prompt=PromptTemplate.from_template(
     """
-    response=client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=prompt,
-        config={
-            "temperature":0.5,
-            "max_output_tokens":500,
-        }
+    you are an interview preperation expert.
+        Company: {company},
+
+        Gap analysis:{gap_analysis}
+        Generate interview Questions.
+        Return ONLY valid JSON.
+
+        Use EXACTLY this format:
+
+        {{
+            "dsa":[],
+            "system_design":[],
+            "behavioral":[]
+        }}
+
+        Do not rename keys.
+        Do not add extra text.
+    """
+)
+parser =JsonOutputParser()
+chain =(llm | prompt | parser)
+def interview_agent(gap_analysis,company):
+    return chain.invoke({
+
+        "gap_analysis":gap_analysis,
+        "company":company
+    }
     )
-    return response.text
