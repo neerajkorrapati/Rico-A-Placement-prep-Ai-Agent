@@ -2,5 +2,5 @@ venv/
 .env
 __pycache__/
 *.pyc
-data/chromadb
+data/chromadb/
 
